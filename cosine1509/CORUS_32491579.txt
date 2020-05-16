@@ -1,0 +1,22 @@
+for _ in range(int(input())):
+    n,q = list(map(int,input().split()))
+    s = input()
+
+    d={}
+
+    for e in s:
+        if not e in d:
+            d.update({e:1})
+        else:
+            d[e]+=1
+
+    freq = d.values()
+
+    for __ in range(q):
+
+        c=int(input())
+
+        b = list(map(lambda x: max(0,x-c), freq))
+
+        print(sum(b))
+    

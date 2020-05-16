@@ -1,0 +1,59 @@
+import java.io.*;
+public class Main
+{
+   public static void main(String[] args)throws IOException
+   {	
+   
+   BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+       String g = 	r.readLine();
+       int t = Integer.parseInt(g);
+       for (int p=0;p<t;p++)
+       {
+        String a = r.readLine();
+        String[] s = a.trim().split(" ");
+        int[] in = new int[3];
+        for(int h=0;h<3;h++)
+        {
+           in[h]=Integer.parseInt(s[h]);
+        }
+        int m = in[0];
+        int n = in[1];
+        int q = in[2];
+        int[][] M = new int[m][n];
+        for(int z=0;z<q;z++)
+        {
+        String a2 = r.readLine();
+        String[] s2 = a2.trim().split(" ");
+        int[] in2 = new int[2];
+        for(int h=0;h<2;h++)
+        {
+           in2[h]=Integer.parseInt(s[h]);
+        }
+          int x = in2[0]-1;
+          int y = in2[1]-1;
+          for(int k=0;k<n;k++)
+          {
+             M[x][k]+=1;
+          }
+          
+            for(int i=0;i<m;i++)
+          {
+             M[i][y]+=1;
+          }
+        }
+        int c = 0;
+        for(int i=0;i<m;i++)
+        {
+        for(int k=0;k<n;k++)
+        {
+          if(M[i][k]%2==1)
+          c++;
+         }
+         }
+         System.out.println(c);
+          
+          
+       }
+       
+       } 
+   }

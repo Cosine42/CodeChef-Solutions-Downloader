@@ -1,0 +1,14 @@
+n = int(input())
+N = list(map(int,input().split()))
+c = 0
+m = 0
+for i in N:
+    if i!=0:
+        c+=1
+    else:
+        c = 0
+        continue
+    if c>m:
+        m=c
+    
+print(m)

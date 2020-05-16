@@ -1,0 +1,18 @@
+for _ in range(int(input())):
+    n =int(input())
+    a=[]
+    for __ in range(n):
+        a.append( list(map(int,input().split())))
+        
+    a.append([0]*n)
+    safe=1
+    
+    for i in range(n):
+        for j in range(n-1):
+            if a[i][j] and (a[i][j+1]+a[i+1][j]):
+                safe = 0
+                break
+    if safe:
+        print('SAFE')
+    else:
+        print('UNSAFE')

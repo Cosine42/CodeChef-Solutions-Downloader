@@ -1,0 +1,24 @@
+
+for _ in range(int(input())):
+    n,r=map(str,input().split())
+    #l=[top,contr,bug,hosted]
+    l=[0,0,0,0]
+    if r=='INDIAN':
+        r=200
+    else:
+        r=400
+    for _ in range(int(n)):
+        inp=input().split()
+        if len(inp)==1:
+            if inp[0]=='CONTEST_HOSTED':
+                l[3]+=50
+            else:
+                l[1]+=300
+        else:
+            if inp[0]=='BUG_FOUND':
+                
+                l[2]+=int(inp[1])
+            else:
+               
+                l[0]+=(300+max(0,20-int(inp[1])))
+    print(sum(l)//r)

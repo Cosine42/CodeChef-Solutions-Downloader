@@ -1,0 +1,39 @@
+
+import java.io.*;
+public class Main
+{
+   public static void main(String[] args)throws IOException
+   {	
+   
+   BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+       String g = 	r.readLine();
+       int t = Integer.parseInt(g);
+       for (int p=0;p<t;p++)
+       {
+        int n = Integer.parseInt(r.readLine());
+        String a = r.readLine();
+        String[] s = a.trim().split(" ");
+        int[] in = new int[n];
+        for(int h=0;h<s.length;h++)
+        {
+           in[h]=Integer.parseInt(s[h]);
+        }
+
+         int c=0;
+         int m=0;
+         for (int i=n-1;i>=0;i--)
+         {
+             c=0;
+             for (int j=i-1;j>=0;j--)
+             {
+                 if(in[j]%in[i]==0)
+                 c++;
+             }
+             if(c>m)
+             m=c;
+          }
+          System.out.println(m);
+         }
+         }
+         }
+       

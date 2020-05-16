@@ -1,0 +1,19 @@
+t = int(input())
+for _ in range(t):
+    n,k = list(map(int,input().strip().split()))
+    arr = list(map(int,input().strip().split()))
+    f=1
+    for i in range(0,n-k): 
+        if (arr[i] > arr[i+k]): 
+              
+            if (arr[i] - arr[i+k] >= k): 
+                arr[i], arr[i+k] = arr[i+k], arr[i] 
+      
+                 
+            else: 
+                print("no")
+                f=0
+                break
+
+    if f:
+        print("yes")

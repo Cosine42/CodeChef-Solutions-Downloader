@@ -1,0 +1,27 @@
+l=[]
+n=0
+def m(x):
+    b=[]
+    c=1
+    i=x
+    j=x
+    while i>0 and l[i]-l[i-1]<=2:
+        c+=1
+        i-=1
+    while j<n-1 and l[j+1]-l[j]<=2:
+        c+=1
+        j+=1
+    return c
+
+for _ in range(int(input())):
+    n = int(input())
+    l = list(map(int,input().split()))
+
+    
+
+    b = list(map(m,range(n)))
+
+    print(min(b),end=" ")
+    print(max(b))
+    
+    

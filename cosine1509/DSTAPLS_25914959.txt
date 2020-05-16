@@ -1,0 +1,19 @@
+
+numTests = int(input())
+
+for i in range (0,numTests):
+    n, k = list(map(int,input().split()))
+    first = n/k
+
+    second = [ 0 for x in range(0,k) ]
+
+    while n>0:
+        for i in range(0,k):
+            second[i]+=k
+            n-=k
+    second=set(second)
+    if (first in second) and len(second)==1:
+        print("NO")
+    else:
+        print("YES")
+    

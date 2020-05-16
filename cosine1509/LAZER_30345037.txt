@@ -1,0 +1,23 @@
+t  = int(input())
+for _ in range(t):
+    n, q = list(map(int,input().split()))
+    yco = list(map(int,input().split()))
+    for __ in range(q):
+        x1, x2, y = list(map(int,input().split()))
+        c = 0
+        if x1>=1 and x2<=n:
+            for x in range(x1,x2):
+                i = x-1
+                y1 = yco[i]
+                 
+                y2 = yco[i+1]
+                if y1>y2:
+                    yt=y2
+                    y2=y1
+                    y1=yt
+                if (y<=y2 and y>=y1)  :
+                         
+                    if not (    x==x2 and y1==y   ) :
+                        c+=1
+        print(c)
+                    

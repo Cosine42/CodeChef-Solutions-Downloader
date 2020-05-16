@@ -1,0 +1,13 @@
+a,b = list(map(int,input().split()))
+c=list(map(int,str(abs(a-b))))
+w=c[:]
+x=w[0]
+
+if x<9:
+     w[0]=w[0]+1
+else:
+     w[0]=w[0]-1
+     
+c=list(map(str,w))
+print("".join(c))
+

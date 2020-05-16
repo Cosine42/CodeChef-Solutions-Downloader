@@ -1,0 +1,27 @@
+for _ in range(int(input())):
+    n = int(input())
+    w = list(map(int,input().split()))
+    m=max(w)
+    l_f=0
+    l=0
+    r_f=0
+    r=0
+    for i in range(n):
+        if(w[i]==m and l_f==0):
+            l=i
+            l_f=1
+        if(w[n-1-i]==m and r_f==0):
+            r=n-1-i
+            r_f=1
+        if r_f and l_f:
+            break
+    c = n//2 - l
+    d = n - 1 - r
+    n_k=0
+    if c>d:
+        n_k=0
+    else:
+        n_k=n-c-r
+    print(n_k)
+        
+        

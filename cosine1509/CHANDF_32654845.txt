@@ -1,0 +1,36 @@
+
+for _ in range(int(input())):
+    x,y,l,r = list(map(int,input().split()))
+    
+    t=0
+    if l==0:
+        if x==0 or y==0:
+                t=0
+        else:
+            if r>=(x|y):
+                t=x|y
+        
+            else:
+                
+                s = str(int(bin(x)[2:]) + int(bin(y)[2:]))
+
+                le = len(s)
+                t=0
+                for i in range(le):
+                    c=s[i]
+                    if c=='2':
+                        x=t+2**(le-1-i)
+                        if x<=r:
+                            t=x
+
+                for i in range(le):
+                    c=s[i]
+                    if c=='1':
+                        x=t+2**(le-1-i)
+                        if x<=r:
+                            t=x
+            
+            
+
+
+    print(t)

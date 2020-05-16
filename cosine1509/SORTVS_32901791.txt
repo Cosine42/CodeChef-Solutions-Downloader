@@ -1,0 +1,42 @@
+
+def minSwap(arr): 
+	n = len(arr) 
+	
+	
+	arrpos = [*enumerate(arr)] 
+	
+    
+	arrpos.sort(key = lambda i:i[1]) 
+	
+	 
+	vis = {k:0 for k in range(n)} 
+	
+	
+	ans = 0
+	for i in range(n): 
+		
+	
+		if vis[i] or arrpos[i][0] == i: 
+			continue
+		
+		cs = 0
+		j = i 
+		while not vis[j]: 
+			
+			
+			vis[j] = 1
+			
+			j = arrpos[j][0] 
+			cs += 1
+	
+		if cs > 0: 
+			ans += (cs - 1) 
+	return ans 
+
+
+for _ in range(int(input())):
+    n,m = list(map(int,input().split()))
+    a = list(map(int,input().split()))
+    if m==0:
+        print(minSwap(a))
+

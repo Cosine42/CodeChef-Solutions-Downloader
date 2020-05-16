@@ -1,0 +1,16 @@
+t = int(input())
+
+def isPrime(x):
+    
+    for i in range(2,x):
+        if x%i==0:
+            return False
+    return True
+
+for _ in range(t):
+    x,y = list(map(int,input().split()))
+    n=x+y+1
+
+    while not isPrime(n):
+        n+=1
+    print(n-x-y)

@@ -1,0 +1,12 @@
+t = int(input())
+for _ in range(t):
+     n,k = list(map(int,input().split()))
+     alist=[]
+     blist=[]
+     alist = list(map(int,input().split()))
+     blist = list(map(int,input().split()))
+     clist=[]
+     for i in range(len(alist)):
+          clist.append((k//alist[i]) * blist[i])
+     clist.sort()
+     print(clist[-1])
