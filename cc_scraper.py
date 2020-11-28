@@ -3,13 +3,8 @@ import os
 from bs4 import BeautifulSoup as bs
 
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
-print("enter username")
-username=input()
-# creating the download folder
-os.makedirs(username)
-
 # function to fetch the solution and store in .txt file
-def write(link,ques):
+def write(link,ques,username,dirr):
     
     
     # fetching the unique solution code
@@ -24,37 +19,44 @@ def write(link,ques):
     soup = bs(res.text,'html.parser')
     answer = soup.select('pre')[0].text
     # creating the file with filename as 'questioncode_solutioncode.txt'
-    file=os.path.join(username, ques+"_"+code+".txt")
+    file=os.path.join(dirr, ques+"_"+code+".txt")
     # writing contents to the .txt file
     with open(file,'w') as f:
         f.write(answer)
     print(ques+"_"+code)
  
-    
+def start(username, dirr):
 
-# accessing the user profile page
-res = requests.get('https://www.codechef.com/users/'+username,headers=headers)
-res.raise_for_status()
-soup = bs(res.text,'html.parser')
-elems = soup.select('.rating-data-section.problems-solved>.content>article>p>span>a')
-links=[]
-# fetching the solution links and question codes
-for e in elems:
-    links.append([e['href'],e.text])
+     
+ 
+    # creating the download folder
+    try:
+        os.makedirs(dirr)
+    except:
+        print("Failed to create directory")
 
-# processing each solution link
-for l in links:
-    f=1
-    i=5
-    while f==1:
-        try:
-            write('https://www.codechef.com'+l[0],l[1])
-            f=0
-        # retrying (upto 5 times) if processing somehow failed
-        except:
-            i-=1
-            if i==0:
-                break
-    
-    
+    # accessing the user profile page
+    res = requests.get('https://www.codechef.com/users/'+username,headers=headers)
+    res.raise_for_status()
+    soup = bs(res.text,'html.parser')
+    elems = soup.select('.rating-data-section.problems-solved>.content>article>p>span>a')
+    links=[]
+    # fetching the solution links and question codes
+    for e in elems:
+        links.append([e['href'],e.text])
 
+    # processing each solution link
+    for l in links:
+        print(l)
+        f=1
+        i=5
+        while f==1:
+            try:
+                write('https://www.codechef.com'+l[0],l[1],username,dirr)
+                f=0
+            # retrying (upto 5 times) if processing somehow failed
+            except:
+                i-=1
+                if i==0:
+                    break
+                print('f') 
